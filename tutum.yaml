@@ -1,0 +1,25 @@
+---
+
+clusters:
+
+- name: go-test
+  region: centralus
+  type: 512mb
+  nodes: 1
+  tags:
+    - go-test
+
+services:
+
+- name: web
+  image: "tutum.co/{{USER}}/go-test-web"
+  build: lib/web
+  containers: 1
+  ports:
+    - inner_port: 3000
+      outer_port: 80
+      port_name: http
+      protocol: tcp
+      published: true
+  tags:
+    - go-test

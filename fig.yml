@@ -1,0 +1,4 @@
+web:
+  build: lib/web
+  ports:
+    - "5000:3000"
